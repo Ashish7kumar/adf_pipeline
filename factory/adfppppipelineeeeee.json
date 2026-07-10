@@ -1,0 +1,15 @@
+{
+	"name": "adfppppipelineeeeee",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "74762ca1-77ae-44a8-bad8-4087be09e6d2",
+		"tenantId": "51078da5-ac75-420f-b00c-5ef6c62f6440"
+	}
+}
