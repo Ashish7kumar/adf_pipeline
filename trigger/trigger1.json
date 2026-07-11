@@ -1,0 +1,29 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "practice_pipeline",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"Schema": "obj",
+					"table": "Objects",
+					"last_updated_column": "last_updated"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2026-07-11T16:53:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
