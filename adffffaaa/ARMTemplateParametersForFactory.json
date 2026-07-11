@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adffffaaa"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://oicestoragee.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "practiceserverrr.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "free-sql-db-5720556"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "adf_pipeline"
+		},
+		"trigger1_properties_practice_pipeline_parameters_Schema": {
+			"value": "obj"
+		},
+		"trigger1_properties_practice_pipeline_parameters_table": {
+			"value": "Objects"
+		},
+		"trigger1_properties_practice_pipeline_parameters_last_updated_column": {
+			"value": "last_updated"
+		}
+	}
+}
