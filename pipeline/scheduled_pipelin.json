@@ -1,0 +1,83 @@
+{
+	"name": "scheduled_pipelin",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "practice_pipeline",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"Schema": {
+							"value": "@pipeline().parameters.Schema",
+							"type": "Expression"
+						},
+						"table": {
+							"value": "@pipeline().parameters.table",
+							"type": "Expression"
+						},
+						"last_updated_column": {
+							"value": "@pipeline().parameters.last_updated_column",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Execute Pipeline1",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-03.westindia.logic.azure.com:443/workflows/f804ebd54869446ab6d5906142a419e2/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=ROxV1UztFvXkvHYWovYVD4TUot28PWUPFA2FUIMWlR4",
+					"body": {
+						"value": "{\n    \"pipeline_name\": \"@{pipeline().Pipeline}\",\n    \"pipeline_error\": \"@{activity('Execute Pipeline1').Error.Message}\"\n}",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"Schema": {
+				"type": "string",
+				"defaultValue": "obj"
+			},
+			"table": {
+				"type": "string",
+				"defaultValue": "Orders"
+			},
+			"last_updated_column": {
+				"type": "string",
+				"defaultValue": "last_updated"
+			},
+			"backdate_Refresh": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
